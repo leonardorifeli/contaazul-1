@@ -1,3 +1,1 @@
-<body class="home">
-<h1 style="text-algin:center;">Página inicial Conta Azul</h1>
-</body>
+<h1><?php echo $company['name']; ?></h1>

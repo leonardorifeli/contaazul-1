@@ -1,7 +1,5 @@
 <?php
-
-class homeController extends controller
-{
+class permissionsController extends controller{
     public function __construct() {
         parent::__construct();
         $users = new users();
@@ -10,8 +8,7 @@ class homeController extends controller
             exit;
         }
     }
-    public function index()
-    {
+    public function index(){
         $data = array(
             'company' => array(),
             'user' => array()
@@ -19,8 +16,8 @@ class homeController extends controller
         $users = new users();
         $data['user'] = $users->getUser($_SESSION['ccUser']);
         $company = new companies();
-        $data['company'] = $company->getCompany($data['user']['id_company']);   
-        $this->loadTemplate('home', $data);
+        $data['company'] = $company->getCompany($data['user']['id_company']); 
+        $this->loadTemplate("permissions", $data);
     }
+    
 }
-

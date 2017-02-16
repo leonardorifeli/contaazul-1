@@ -1,0 +1,93 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family:sans-serif;
+}
+.leftmenu{
+    width: 200px;
+    background-color: #1F232A;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+}
+.containe{
+    padding-left: 200px;  
+}
+.top{
+    height: 40px;
+    background-color: #232830;
+    color: #FFF;
+}
+.top_right{
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.top_right a{
+    color: #FFF;
+    text-decoration: none;
+}
+.company_name{
+    height: 100px;
+    line-height: 100px;
+    font-size: 13px;
+    color: #FFF;
+    text-align: center;
+}
+.menuarea{
+    color: #FFF;
+}
+.menuarea ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menuarea li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    padding-left: 30px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px 14px;   
+}
+.menuarea li:hover{
+    background-color: #111;
+}
+.menuarea li a{
+    color: #FFF;
+    text-decoration: none;
+    display: block;/*Faz com que o link fique em toda a area do li*/
+}
+.menuarea li:nth-child(1){
+    background-image: url('../images/home.png');
+}
+.menuarea li:nth-child(2){
+    background-image: url('../images/key.png');
+}
+.area{
+    padding: 15px;
+}
+.tabitem{
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #000;
+    background-color: #EEE;
+    cursor: pointer;
+}
+.activetab{
+    border-bottom: 1px solid #FFF;
+    background-color: #FFF;
+}
+.tabbody{
+    display: none;
+}
+
+

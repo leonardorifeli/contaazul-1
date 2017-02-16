@@ -11,7 +11,14 @@
     </head>
     <body>
         <div class="loginarea">
-            
+            <form method="POST">
+                <?php if(!empty($error)): ?>
+                    <div class="alert alert-warning"><?php echo $error; ?></div>
+                <?php endif;?>
+                <input type="email" name="email" class="form-control" value="admin@empresa123.com.br" placeholder="Digite seu e-mail" autofocus />
+                <input type="password" name="password" value="123" class="form-control" placeholder="Digite sua senha" />
+                <input type="submit" value="Entrar" class="btn btn-info form-control" />
+            </form>
         </div>
     </body>
 </html>
