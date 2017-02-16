@@ -117,9 +117,32 @@ button, .button {
     font-size:13px;
     display:inline-block;
 }
+.button_small{
+    height:30px;
+    line-height:30px;
+}
 .button a{
     color:#FFF;
     text-decoration:none;
+}
+table{
+    margin-top:10px;   
+}
+table th{
+    height:40px;
+    line-height:40px;
+    background-color:#DDD;
+    text-align:left;
+    padding-left:10px;
+    padding-right:10px;
+}
+table td{
+    height:40px;
+    line-height:40px;
+    background-color:#EEE;
+    text-align:left;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 
