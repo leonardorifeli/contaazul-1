@@ -19,7 +19,7 @@
             <?php foreach($user['permissions'] as $permission):?>
                 <tr>
                     <td><?php echo utf8_encode($permission['name']); </td>
-                    <td>
+                    <td width="50">
                         <a href="<?php echo BASE_URL;?>permissions/edit/<?php echo $permission['id'];?>" class="button button_small" >Editar</a>
                         <a href="<?php echo BASE_URL;?>permissions/del/<?php echo $permission['id'];?>" class="button button_small" >Excluir</a>
                     </td>
