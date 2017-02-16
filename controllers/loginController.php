@@ -24,7 +24,7 @@ class loginController extends controller{
             header("Location: ".BASE_URL."login");
         }
         else{
-            echo "Você não tem permissão para deslogar";   
+            echo "Você não tem permissão para sair";   
         }    
     }
 }
