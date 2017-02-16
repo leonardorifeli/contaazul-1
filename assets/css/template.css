@@ -108,12 +108,17 @@ button, .button {
     background-color:#224074;
     color:#FFF;
     height:40px;
+    line-height:40px;
     border-radius:3px;
     padding-left:20px;
     padding-right:20px; 
     cursor:pointer;
     font-size:13px;
     display:inline-block;
+}
+.button a{
+    color:#FFF;
+    text-decoration:none;
 }
 
 
