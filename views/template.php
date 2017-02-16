@@ -21,7 +21,7 @@
         </div>  
         <div class="containe">   
             <div class="top"> 
-                <div class="top_right"><a href="<?php echo BASE_URL; ?>login/logOut/<?php echo $user['id']; ?>">Sair</a></div>
+                <div class="top_right"><a href="<?php echo BASE_URL; ?>login/logOut">Sair</a></div>
                 <div class="top_right"><?php echo $user['name']; ?></div>    
             </div>  
             <div class="area">
