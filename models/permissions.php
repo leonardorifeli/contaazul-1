@@ -4,14 +4,16 @@ class permissions extends model{
         parent::__construct();
     }
     public function getPermissions($group, $id_company){
-        $array = array();
+        $params = "";
         $sql = "SELECT params FROM permission_groups WHERE id = '$group' AND id_company = '$id_company'";
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
             $sql = $sql->fetch();
-            $array = explode(",", $sql['params']);
+            if(!empty($sql['params'])){
+                $params = $sql['params'];
+            }       
         }
-        return $array;
+        return $params;
     }
 }
 
