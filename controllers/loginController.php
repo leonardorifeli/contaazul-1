@@ -17,8 +17,15 @@ class loginController extends controller{
         $this->loadView("login", $data);
     }
     public function logOut(){
-        unset($_SESSION['ccUser']);
-        header("Location: ".BASE_URL."login");
+        $users = new users();
+        $user = $users->getUser($_SESSION['ccUser']);
+        if(in_array($user['permissions'], "logout"){
+            unset($_SESSION['ccUser']);
+            header("Location: ".BASE_URL."login");
+        }
+        else{
+            echo "Você não tem permissão para deslogar";   
+        }    
     }
 }
 
