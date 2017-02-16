@@ -72,6 +72,9 @@ body{
 .area{
     padding: 15px;
 }
+.tabarea{
+    height:40px;   
+}
 .tabitem{
     float: left;
     width: 50%;
@@ -110,6 +113,7 @@ button, .button {
     padding-right:20px; 
     cursor:pointer;
     font-size:13px;
+    display:inline-block;
 }
 
 
