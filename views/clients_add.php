@@ -10,28 +10,31 @@
     <input type="phone" name="phone" id="phone" onkeyup="maskTel(this)" /><br/><br/>
     
     <label for="address_zipcode">Cep</label>
-    <input type="text" id="address_zipcode" onkeyup="maskCep(this); getCep(this);" maxlength="9"/><br/><br/>
-
-    <label for="address_number">Número</label>
-    <input type="text" id="address_number" /><br/><br/>
-    
-    <label for="address_complement">Complemento</label>
-    <input type="text" id="address_complement" /><br/><br/>
+    <input type="text" id="address_zipcode" name="address_zipcode" onkeyup="maskCep(this); getCep(this);" maxlength="9"/><br/><br/>
     
     <label for="address">Logradouro</label>
-    <input type="text" id="address" /><br/><br/>
+    <input type="text" name="address" id="address" /><br/><br/>
+
+    <label for="address_number">Número</label>
+    <input type="text" name="address_number" id="address_number" /><br/><br/>
+    
+    <label for="address_complement">Complemento</label>
+    <input type="text" name="address_complement" id="address_complement" /><br/><br/>
     
     <label for="address_neighborhood">Bairro</label>
-    <input type="text" id="address_neighborhood" /><br/><br/>
+    <input type="text" name="address_neighborhood" id="address_neighborhood" /><br/><br/>
     
     <label for="address_city">Cidade</label>
-    <input type="text" id="address_city" /><br/><br/>
+    <input type="text" name="address_city" id="address_city" /><br/><br/>
     
     <label for="address_state">Estado</label>
-    <input type="text" id="address_state" /><br/><br/>
+    <input type="text" name="address_state" id="address_state" /><br/><br/>
     
     <label for="address_uf">UF</label>
-    <select name="address_uf" id="address_uf"></select><br/><br/>
+    <select name="address_uf" name="address_uf" id="address_uf"></select><br/><br/>
+    
+    <label for="address_country">País</label>
+    <input type="text" name="address_country" id="address_country" /><br/><br/>
        
     <label for="stars">Estrelas</label>
     <select name="stars" id="stars">

@@ -35,38 +35,45 @@ class clientsController extends controller
             $name = addslashes($_POST['name']);
             $email = addslashes($_POST['email']);
             $phone = addslashes($_POST['phone']);
+            $address_zipcode = addslashes($_POST['address_zipcode']);
             $address = addslashes($_POST['address']);
+            $address_number = addslashes($_POST['address_number']);
+            $address_complement = addslashes($_POST['address_complement']);   
             $address_neighborhood = addslashes($_POST['address_neighborhood']);
             $address_city = addslashes($_POST['address_city']);
             $address_state = addslashes($_POST['address_state']);
+            $address_uf = addslashes($_POST['address_uf']);
             $address_country = addslashes($_POST['address_country']);
-            $address_zipcode = addslashes($_POST['address_zipcode']);
             $stars = addslashes($_POST['stars']);
             $internal_observation = addslashes($_POST['internal_observation']);
-            $clients->add($name, $email, $phone, $address, $address_neighborhood, $address_city, $address_state, $address_country, $address_zipcode, $stars, $internal_observation);
-            header("Location: ".BASE_URL."users");
+            $clients->add($name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation);
+            header("Location: ".BASE_URL."clients");
         }
         $this->loadTemplate('clients_add', $data);
     }
-    public function edit($id_client){
+    public function edit($id_cliente){
         $data = $this->data(); 
         $clients = new clients();
         if (isset($_POST['name']) && !empty($_POST['name'])) {
-            $id_client = addslashes($id_client);
+            $id_cliente = addslashes($id_cliente);
             $name = addslashes($_POST['name']);
             $email = addslashes($_POST['email']);
             $phone = addslashes($_POST['phone']);
+            $address_zipcode = addslashes($_POST['address_zipcode']);
             $address = addslashes($_POST['address']);
+            $address_number = addslashes($_POST['address_number']);
+            $address_complement = addslashes($_POST['address_complement']);   
             $address_neighborhood = addslashes($_POST['address_neighborhood']);
             $address_city = addslashes($_POST['address_city']);
             $address_state = addslashes($_POST['address_state']);
+            $address_uf = addslashes($_POST['address_uf']);
             $address_country = addslashes($_POST['address_country']);
-            $address_zipcode = addslashes($_POST['address_zipcode']);
             $stars = addslashes($_POST['stars']);
             $internal_observation = addslashes($_POST['internal_observation']);
-            $clients->add($id_client, $name, $email, $phone, $address, $address_neighborhood, $address_city, $address_state, $address_country, $address_zipcode, $stars, $internal_observation);
-            header("Location: ".BASE_URL."users");
+            $clients->add($id_cliente, $name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation);
+            header("Location: ".BASE_URL."clients");
         }
+        $data['clients'] = $clients->getClient($id_cliente);
         $this->loadTemplate('clients_edit', $data);
     }
     public function del($id_client){

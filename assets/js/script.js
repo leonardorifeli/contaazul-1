@@ -37,7 +37,7 @@ function maskTel(obj){
         case 7:case 8:case 9:case 10:
           telefone = '('+tel.substr(0, 2)+')'+tel.substr(2, 4)+'-'+tel.substr(6, 4);
         break;
-        case 11:default:
+        case 11:
           telefone = '('+tel.substr(0, 2)+')'+tel.substr(2, 5)+'-'+tel.substr(7, 4);
         break;
     }
@@ -71,6 +71,7 @@ function getCep(obj){
               $('#address_city').val(json.localidade);
               $('#address_state').val(json.localidade);
               $('#address_uf').val(json.uf);
+              $('#address_country').val("Brasil");
               $('#address_number').focus();
             }
         });

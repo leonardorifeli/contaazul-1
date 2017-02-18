@@ -23,12 +23,12 @@ class clients extends model{
         }
         return $array;
     }   
-    public function add($name, $email, $phone, $address, $address_neighborhood, $address_city, $address_state, $address_country, $address_zipcode, $stars, $internal_observation){
-        $sql = "INSERT INTO clients SET id_company = '$this->id_company', name = '$name', email = '$email', phone = '$phone', address = '$address', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_country = '$address_country', address_zipcode = '$address_zipcode', stars = '$stars', internal_observation = '$internal_observation'";
+    public function add($name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation){
+        $sql = "INSERT INTO clients SET id_company = '$this->id_company', name = '$name', email = '$email', phone = '$phone', address_zipcode = '$address_zipcode', address = '$address', address_number = '$address_number', address_complement = '$address_complement', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_uf = '$address_uf', address_country = '$address_country', stars = '$stars', internal_observation = '$internal_observation'";
         $this->db->query($sql);
     }
-    public function edit($id_client, $name, $email, $phone, $address, $address_neighborhood, $address_city, $address_state, $address_country, $address_zipcode, $stars, $internal_observation){
-        $sql = "UPDATE clients SET name = '$name', email = '$email', phone = '$phone', address = '$address', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_country = '$address_country', address_zipcode = '$address_zipcode', stars = '$stars', internal_observation = '$internal_observation' WHERE id_company = '$this->id_company' AND id = '$id_client'";
+    public function edit($id_cliente, $name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation){
+        $sql = "UPDATE clients SET name = '$name', email = '$email', phone = '$phone', address_zipcode = '$address_zipcode', address = '$address', address_number = '$address_number', address_complement = '$address_complement', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_uf = '$address_uf', address_country = '$address_country', stars = '$stars', internal_observation = '$internal_observation' WHERE id = '$id_cliente' AND id_company = '$this->id_company'";
         $this->db->query($sql);
     }
     public function del($id_client){
