@@ -14,8 +14,21 @@
             <div class="company_name"><?php echo $company['name']; ?></div>
             <div class="menuarea">
                 <ul>
-                    <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>permissions">Permissões</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>">Home</a></li> 
+                    <?php  foreach($user['permissions'] as $permission){
+                         if (in_array("permissions",$permission)):?>
+                        <li><a href="<?php echo BASE_URL; ?>permissions">Permissões</a></li>
+                    <?php endif;} ?>  
+                    <?php  foreach($user['permissions'] as $permission){
+                         if (in_array("users",$permission)):?>
+                        <li><a href="<?php echo BASE_URL; ?>users">Usuários</a></li>
+                    <?php endif;} ?>
+                    <?php  foreach($user['permissions'] as $permission){
+                         if (in_array("clients",$permission)):?>
+                        <li><a href="<?php echo BASE_URL; ?>clients">Clientes</a></li>
+                    <?php endif;} ?>
+                    
+                    
                 </ul>
             </div>
         </div>  

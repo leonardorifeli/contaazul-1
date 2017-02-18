@@ -18,8 +18,9 @@ class homeController extends controller
         );
         $users = new users();
         $data['user'] = $users->getUser($_SESSION['ccUser']);
+        
         $company = new companies();
-        $data['company'] = $company->getCompany($data['user']['id_company']);   
+        $data['company'] = $company->getCompany();   
         $this->loadTemplate('home', $data);
     }
 }

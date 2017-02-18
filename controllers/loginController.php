@@ -17,15 +17,8 @@ class loginController extends controller{
         $this->loadView("login", $data);
     }
     public function logOut(){
-        $users = new users();
-        $user = $users->getUser($_SESSION['ccUser']);
-        if(in_array($user['permissions'], "logout"){
-            unset($_SESSION['ccUser']);
-            header("Location: ".BASE_URL."login");
-        }
-        else{
-            echo "Você não tem permissão para sair";   
-        }    
+        unset($_SESSION['ccUser']);
+        header("Location: ".BASE_URL."login"); 
     }
 }
 
