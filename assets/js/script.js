@@ -7,6 +7,48 @@ $(function(){
         $('.tabbody').eq(item).show();
     });
     fillUf();
+    
+    $("#search").on("focus", function(){
+        $(this).animate({
+            width:300
+        },"fast");
+    });
+    $("#search").on("blur", function(){
+        if ($(this).val()==="") {
+            $(this).animate({
+                width:100
+            }, "fast");  
+        } 
+        $(".searchresults").hide();
+    });
+    
+    $("#search").on("keyup",function(){
+        var datatype = $(this).attr("data-type");
+        var q = $(this).val();
+        console.log(BASE_URL+"ajax/"+datatype);
+        if (datatype !== "") {
+            $.ajax({
+                url:BASE_URL+"ajax/"+datatype,
+                type:"GET",
+                data:{q:q},
+                dataType:"json",
+                success:function(json){
+                    if ($(".searchresults").length === 0) {
+                        $("#search").after("<div class='searchresults'></div>");
+                        $(".searchresults").css("left", $("#search").offset().left);
+                        $(".searchresults").css("top", $("#search").offset().top+$("#search").height()+3);
+                    }
+                    var html = '';
+                    for(var i in json){
+                        html += "<div class='si'><a href='"+json[i].link+"'>"+json[i].name+"</a></div>";
+                    }
+                    $(".searchresults").html(html);
+                    $(".searchresults").show();
+                }
+            });
+        }
+    });
+    
 });
 //Retorna apenas números
 function onlyNumbers(text){

@@ -5,14 +5,29 @@ class clients extends model{
         parent::__construct();
         $this->id_company = $_SESSION['company'];
     }
-    public function getClientsAll(){
+    public function getClientsAll($offset = '0', $limit = '10'){
         $array = array();
-        $sql = "SELECT * FROM clients WHERE id_company = '$this->id_company'";
+        $sql = "SELECT * FROM clients WHERE id_company = '$this->id_company' ORDER BY name LIMIT $offset, $limit";
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();
         }
         return $array;
+    }
+    public function getClientsByName($name){
+        $array = array();
+        $sql = "SELECT name, id FROM clients WHERE id_company = '$this->id_company' AND name LIKE '%$name%' LIMIT 10";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
+    public function totalClients(){
+        $sql = "SELECT count(id) as total FROM clients WHERE id_company = '$this->id_company'";
+        $sql = $this->db->query($sql);
+        $sql = $sql->fetch();
+        return $sql['total'];
     }
     public function getClient($id){
         $array = array();

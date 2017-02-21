@@ -24,8 +24,18 @@ class clientsController extends controller
     public function index()
     {
         $data = $this->data(); 
+        $data['clients_all'] = array();
+        $data['pages'] = '0';
         $clients = new clients();
-        $data['clients_all'] = $clients->getClientsAll();
+        $limit = 6;
+        $p = 1;
+        $offset = 0;
+        if (isset($_GET['p']) && !empty($_GET['p'])) {
+           $p = intval(addslashes($_GET['p'])) - 1;
+           $offset = ($p * $limit);
+        }
+        $data['clients_all'] = $clients->getClientsAll($offset, $limit);
+        $data['pages'] = ceil($clients->totalClients()/$limit);
         $this->loadTemplate('clients', $data);
     }
     public function add(){

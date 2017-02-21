@@ -166,6 +166,44 @@ table td{
 .permissions{
     margin-bottom: 25px;
 }
+.pages{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.page_item{
+    margin-bottom: 5px;
+}
+#search{
+    width: 100px;
+    float: right;
+    background-image: url("../images/search.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 5px;
+    padding-left: 25px;
+    border-radius: 3px;
+    border: 1px solid #CCC;
+}
+.searchresults{
+    width: 300px;
+    height: 200px;
+    background-color: #FFF;
+    position: absolute;
+    border: 1px solid #CCC;
+}
+.si{
+    height: 20px;
+    line-height: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.si a{
+    color: #000;
+    text-decoration: none;
+}
+.si:hover{
+    background-color: #EEE;
+}
 
 
 
