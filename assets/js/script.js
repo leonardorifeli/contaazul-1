@@ -19,7 +19,9 @@ $(function(){
                 width:100
             }, "fast");  
         } 
-        $(".searchresults").hide();
+        setTimeout(function(){
+            $(".searchresults").hide();
+        }, 500);   
     });
     
     $("#search").on("keyup",function(){
@@ -40,7 +42,7 @@ $(function(){
                     }
                     var html = '';
                     for(var i in json){
-                        html += "<div class='si'><a href='"+json[i].link+"'>"+json[i].name+"</a></div>";
+                        html += "<div class='si'><a href='"+BASE_URL+"clients/edit/"+json[i].id+"'>"+json[i].name+"</a></div>";
                     }
                     $(".searchresults").html(html);
                     $(".searchresults").show();

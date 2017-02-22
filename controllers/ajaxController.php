@@ -21,4 +21,13 @@ class ajaxController extends controller
         }
         echo json_encode($clients);
     }
+    public function searchInventory(){
+        $inventorys = array();
+        if (isset($_GET['q']) && !empty($_GET['q'])) {
+            $name = addslashes($_GET['q']);
+            $inventory = new inventory();
+            $inventorys = $inventory->getInventoryByName($name);
+        }
+        echo json_encode($inventorys);
+    }
 }

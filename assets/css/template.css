@@ -75,6 +75,9 @@ body{
 .menuarea li:nth-child(4){
     background-image: url('../images/clients.png');
 }
+.menuarea li:nth-child(5){
+    background-image: url('../images/inventory.png');
+}
 .area{
     padding: 15px;
 }
@@ -106,6 +109,7 @@ input[type=select],
 input[type=textarea],
 input[type=submit],
 input[type=phone],
+input[type=number],
 select,
 textarea{
     width:100%;
@@ -186,20 +190,20 @@ table td{
 }
 .searchresults{
     width: 300px;
-    height: 200px;
     background-color: #FFF;
     position: absolute;
     border: 1px solid #CCC;
 }
 .si{
-    height: 20px;
-    line-height: 20px;
+    height: 30px;
+    line-height: 30px;
     padding-left: 10px;
     cursor: pointer;
 }
 .si a{
     color: #000;
     text-decoration: none;
+    display: block;/*Cobre toda a area do link*/
 }
 .si:hover{
     background-color: #EEE;
