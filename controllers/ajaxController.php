@@ -19,7 +19,7 @@ class ajaxController extends controller
             $client = new clients();
             $clients = $client->getClientsByName($name);
         }
-        echo json_encode($clients);
+        echo json_encode($clients);exit;
     }
     public function searchInventory(){
         $inventorys = array();
@@ -29,5 +29,14 @@ class ajaxController extends controller
             $inventorys = $inventory->getInventoryByName($name);
         }
         echo json_encode($inventorys);
+    }
+    public function add_client(){
+        $data = array();
+        if (isset($_POST['name']) && !empty($_POST['name'])) {
+            $name = addslashes($_POST['name']);
+            $client = new clients();
+            $data['id'] = $client->add($name);
+        }
+        echo json_encode($data);
     }
 }

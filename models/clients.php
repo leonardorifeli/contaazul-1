@@ -38,9 +38,10 @@ class clients extends model{
         }
         return $array;
     }   
-    public function add($name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation){
+    public function add($name, $email = '', $phone = '', $address_zipcode = '', $address = '', $address_number = '', $address_complement = '', $address_neighborhood = '', $address_city = '', $address_state = '', $address_uf = '', $address_country = '', $stars = '3', $internal_observation = ''){
         $sql = "INSERT INTO clients SET id_company = '$this->id_company', name = '$name', email = '$email', phone = '$phone', address_zipcode = '$address_zipcode', address = '$address', address_number = '$address_number', address_complement = '$address_complement', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_uf = '$address_uf', address_country = '$address_country', stars = '$stars', internal_observation = '$internal_observation'";
         $this->db->query($sql);
+        return $this->lastInsertId();
     }
     public function edit($id_cliente, $name, $email, $phone, $address_zipcode, $address, $address_number, $address_complement, $address_neighborhood, $address_city, $address_state, $address_uf, $address_country, $stars, $internal_observation){
         $sql = "UPDATE clients SET name = '$name', email = '$email', phone = '$phone', address_zipcode = '$address_zipcode', address = '$address', address_number = '$address_number', address_complement = '$address_complement', address_neighborhood = '$address_neighborhood', address_city = '$address_city', address_state = '$address_state', address_uf = '$address_uf', address_country = '$address_country', stars = '$stars', internal_observation = '$internal_observation' WHERE id = '$id_cliente' AND id_company = '$this->id_company'";

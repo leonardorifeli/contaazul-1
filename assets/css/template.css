@@ -78,6 +78,9 @@ body{
 .menuarea li:nth-child(5){
     background-image: url('../images/inventory.png');
 }
+.menuarea li:nth-child(6){
+    background-image: url('../images/sales.png');
+}
 .area{
     padding: 15px;
 }
@@ -207,6 +210,19 @@ table td{
 }
 .si:hover{
     background-color: #EEE;
+}
+input[name=searchClients]{
+    width: 250px;
+    float: left;
+}
+.client_add_button{
+    font-size:17px;
+    height:30px;
+    line-height:26px;
+    display:block;
+    float:left;
+    margin-top:5px;
+    margin-left:10px
 }
 
 

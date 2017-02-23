@@ -31,7 +31,11 @@
                     <?php  foreach($user['permissions'] as $permission){
                          if (in_array("inventory",$permission)):?>
                         <li><a href="<?php echo BASE_URL; ?>inventory">Estoque</a></li>
-                    <?php endif;} ?>        
+                    <?php endif;} ?> 
+                    <?php  foreach($user['permissions'] as $permission){
+                         if (in_array("sales",$permission)):?>
+                        <li><a href="<?php echo BASE_URL; ?>sales">Vendas</a></li>
+                    <?php endif;} ?> 
                 </ul>
             </div>
         </div>  
