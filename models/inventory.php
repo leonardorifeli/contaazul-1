@@ -18,7 +18,7 @@ class inventory extends model{
     }
     public function getInventoryByName($name){
         $array = array();
-        $sql = "SELECT name, id FROM inventory WHERE id_company = '$this->id_company' AND name LIKE '%$name%' LIMIT 10";
+        $sql = "SELECT name, price, quantity, id FROM inventory WHERE id_company = '$this->id_company' AND name LIKE '%$name%' AND quantity > '0' LIMIT 10";
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();

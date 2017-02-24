@@ -21,16 +21,11 @@
                     <td><?php echo date("d/m/Y", strtotime($sale['date_sale'])); ?></td>
                     <td><?php echo $statuses[$sale['status']]; ?></td>
                     <td>R$ <?php echo number_format($sale['total_price'], 2, ",", "."); ?></td>
-                    <td width="200">
+                    <td width="100">
                     <?php foreach($user['permissions'] as $permission){
                         if (in_array("sale_edit",$permission)):?>
                             <div class="button button_small"><a href="<?php echo BASE_URL;?>sales/edit/<?php echo $sale['id_sale'];?>" >Editar</a></div>
-                    <?php endif;} ?>  
-                    <?php foreach($user['permissions'] as $permission){
-                        if (in_array("sale_del",$permission)):?>
-                            <div class="button button_small"><a href="<?php echo BASE_URL;?>sales/del/<?php echo $sale['id_sale'];?>" onclick=" return confirm('Deseja realmente excluir esta venda?')" >Excluir</a></div>
-                    <?php endif;} ?>    
-                        
+                    <?php endif;} ?>                       
                     </td>
                 </tr>
             <?php endforeach;?>

@@ -12,6 +12,15 @@ class ajaxController extends controller
     }
     public function index(){}
     
+    public function searchProducts(){
+        $inventory = array();
+        if (isset($_GET['q']) && !empty($_GET['q'])) {
+            $name = addslashes($_GET['q']);
+            $inventories = new inventory();
+            $inventory = $inventories->getInventoryByName($name);
+        }
+        echo json_encode($inventory);
+    }
     public function searchClients(){
         $clients = array();
         if (isset($_GET['q']) && !empty($_GET['q'])) {
@@ -19,7 +28,7 @@ class ajaxController extends controller
             $client = new clients();
             $clients = $client->getClientsByName($name);
         }
-        echo json_encode($clients);exit;
+        echo json_encode($clients);
     }
     public function searchInventory(){
         $inventorys = array();

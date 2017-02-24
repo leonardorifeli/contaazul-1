@@ -224,6 +224,20 @@ input[name=searchClients]{
     margin-top:5px;
     margin-left:10px
 }
+.total{
+   float: right; 
+   font-size: 30px;
+   padding:15px;
+}
+#total_price{
+    font-size: 40px;
+    background-color: #224074;
+    color: #FFF;
+    float: right;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
 
 
 

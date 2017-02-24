@@ -40,16 +40,17 @@ class salesController extends controller
         $this->loadTemplate('sales', $data);
     }
     public function add(){
-        $data = $this->data(); 
-        $sales = new sales();
+        $data = $this->data();
+        $data['error'] = '';
+        $sales = new sales();    
         if (isset($_POST['id_client']) && !empty($_POST['id_client'])) {
-            $id_client = addslashes($_POST['id_client']);
-            $total_price = addslashes($_POST['total_price']);
-            $total_price = str_replace(".", "", $total_price);
-            $total_price = str_replace(",", ".", $total_price);
+            $id_client = addslashes($_POST['id_client']);   
             $status = addslashes($_POST['status']);
-            $sales->add($id_client, $total_price, $status);
-            header("Location: ".BASE_URL."sales");
+            $quant = $_POST['quant'];
+            $data['error'] = $sales->add($id_client, $quant, $status);
+            if (empty($data['error'])) {
+                header("Location: ".BASE_URL."sales");
+            }
         }
         $this->loadTemplate('sales_add', $data);
     }
@@ -66,13 +67,6 @@ class salesController extends controller
             header("Location: ".BASE_URL."sales");
         }
         $this->loadTemplate('sales_edit', $data);
-    }
-    public function del($id_sale){
-        $sales = new sales();
-        $id_sale = addslashes($id_sale);
-        $sales->del($id_sale);
-        header("Location: ".BASE_URL."sales");
-        exit;
     }
 }
 
