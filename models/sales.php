@@ -16,6 +16,15 @@ class sales extends model{
         }
         return $array;
     }
+    public function getSale($id_sale){
+        $array = array();
+        $sql = "SELECT c.name, s.date_sale, s.total_price, s.status FROM sales AS s LEFT JOIN clients AS c ON s.id_client = c.id WHERE s.id = '$id_sale'";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch();
+        }
+        return $array;
+    }
     public function totalSales(){
         $sql = "SELECT count(id) as total FROM sales WHERE id_company = '$this->id_company'";
         $sql = $this->db->query($sql);
@@ -55,8 +64,8 @@ class sales extends model{
         $this->db->query($sql);
         return $error;
     }
-    public function edit($id_sale, $total_price, $status){
-        $sql = "UPDATE sales SET id_user = '$this->id_user', date_sale = NOW(), total_price = '$total_price', status = '$status' WHERE id = '$id_sale' AND id_company = '$this->id_company'";
+    public function edit($id_sale, $status){
+        $sql = "UPDATE sales SET id_user = '$this->id_user', status = '$status' WHERE id = '$id_sale' AND id_company = '$this->id_company'";
         $this->db->query($sql);
     }
 }

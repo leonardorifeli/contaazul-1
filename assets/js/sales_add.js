@@ -126,7 +126,7 @@ function updateTotal(){
             var res = parseFloat(price)*parseInt(quant);
             total += res;
         }
-        $("#total_price").html(total);  
+        $("#total_price").html(total.toFixed(2));  
     }
     else{
         $("#total_price").html("0,00");
@@ -141,7 +141,7 @@ function updateSubtotal(obj){
         quant = 1;
     }
     var res = parseFloat(parseFloat(price)*parseInt(quant));
-    $(obj).closest('tr').find(".subtotal").html("R$ "+res);
+    $(obj).closest('tr').find(".subtotal").html("R$ "+res.toFixed(2));
     updateTotal();
 }
 function delProduc(obj){

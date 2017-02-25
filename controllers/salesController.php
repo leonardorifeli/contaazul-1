@@ -57,15 +57,14 @@ class salesController extends controller
     public function edit($id_sale){
         $data = $this->data(); 
         $sales = new sales();
-        if (isset($_POST['id_client']) && !empty($_POST['id_client'])) {
+        if (isset($_POST['status']) && $_POST['status'] !== "") {
             $id_sale = addslashes($id_sale);
-            $total_price = addslashes($_POST['total_price']);
-            $total_price = str_replace(".", "", $total_price);
-            $total_price = str_replace(",", ".", $total_price);
             $status = addslashes($_POST['status']);
-            $sales->edit($id_sale, $total_price, $status);
+            $sales->edit($id_sale, $status);
             header("Location: ".BASE_URL."sales");
         }
+        $data['statuses'] = ["Aguardando Pgto.", "Pago", "Cancelado"];
+        $data['sale'] = $sales->getSale($id_sale);
         $this->loadTemplate('sales_edit', $data);
     }
 }

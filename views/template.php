@@ -36,6 +36,10 @@
                          if (in_array("sales",$permission)):?>
                         <li><a href="<?php echo BASE_URL; ?>sales">Vendas</a></li>
                     <?php endif;} ?> 
+                    <?php  foreach($user['permissions'] as $permission){
+                         if (in_array("puchases",$permission)):?>
+                        <li><a href="<?php echo BASE_URL; ?>puchases">Compras</a></li>
+                    <?php endif;} ?> 
                 </ul>
             </div>
         </div>  
