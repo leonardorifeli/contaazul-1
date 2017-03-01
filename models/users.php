@@ -5,6 +5,18 @@ class users extends model{
         parent::__construct();
         $this->id_company = ($this->isLogged())?$_SESSION['company']:"";
     }
+    public function hasPermission($id_group, $permission){
+        $return = false;
+        $sql = "SELECT params FROM permission_groups WHERE id = '$id_group'";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $sql = $sql->fetch();
+            $sql = "SELECT name FROM permissions_params WHERE id IN(".$sql['params'].") AND name = '$permission'";
+            $sql = $this->db->query($sql);
+            $return = ($sql->rowCount() > 0)?true:false;
+        } 
+        return $return;
+    }
     public function isLogged(){
         return (isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser']))?true:false;
     }
@@ -29,8 +41,6 @@ class users extends model{
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
             $array = $sql->fetch();
-            $permissions = new permissions();
-            $array['permissions'] = $permissions->getPermissions($array['id_group'], $array['id_company']);
         }
         return $array;
     }

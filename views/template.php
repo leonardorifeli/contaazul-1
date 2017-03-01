@@ -16,30 +16,24 @@
             <div class="menuarea">
                 <ul>
                     <li><a href="<?php echo BASE_URL; ?>">Home</a></li> 
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("permissions",$permission)):?>
+                    <?php if (isset($permissions) && $permissions):?>
                         <li><a href="<?php echo BASE_URL; ?>permissions">Permissões</a></li>
-                    <?php endif;} ?>  
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("users",$permission)):?>
+                    <?php endif; ?>  
+                    <?php if (isset($users) && $users):?>
                         <li><a href="<?php echo BASE_URL; ?>users">Usuários</a></li>
-                    <?php endif;} ?>
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("clients",$permission)):?>
+                    <?php endif; ?>
+                    <?php if (isset($clients) && $clients):?>
                         <li><a href="<?php echo BASE_URL; ?>clients">Clientes</a></li>
-                    <?php endif;} ?>
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("inventory",$permission)):?>
+                    <?php endif; ?>
+                    <?php if (isset($inventory) && $inventory):?>
                         <li><a href="<?php echo BASE_URL; ?>inventory">Estoque</a></li>
-                    <?php endif;} ?> 
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("sales",$permission)):?>
+                    <?php endif; ?>
+                    <?php if (isset($sales) && $sales):?>
                         <li><a href="<?php echo BASE_URL; ?>sales">Vendas</a></li>
-                    <?php endif;} ?> 
-                    <?php  foreach($user['permissions'] as $permission){
-                         if (in_array("puchases",$permission)):?>
+                    <?php endif; ?>
+                    <?php if (isset($puchases) && $puchases):?>
                         <li><a href="<?php echo BASE_URL; ?>puchases">Compras</a></li>
-                    <?php endif;} ?> 
+                    <?php endif; ?>                        
                 </ul>
             </div>
         </div>  

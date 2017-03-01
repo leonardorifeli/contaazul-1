@@ -16,8 +16,19 @@ class homeController extends controller
             'company' => array(),
             'user' => array()
         );
+        
         $users = new users();
         $data['user'] = $users->getUser($_SESSION['ccUser']);
+        //Permissions menu
+        $data['permissions'] = $users->hasPermission($data['user']['id_group'], "permissions");
+        $data['users'] = $users->hasPermission($data['user']['id_group'], "users");
+        $data['clients'] = $users->hasPermission($data['user']['id_group'], "clients");
+        $data['inventory'] = $users->hasPermission($data['user']['id_group'], "inventory");
+        $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
+        $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
+        //Permissions screen
+        
+        
         $company = new companies();
         $data['company'] = $company->getCompany();   
         $this->loadTemplate('home', $data);
