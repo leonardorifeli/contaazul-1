@@ -2,10 +2,9 @@
 
 <div class="tabcontent">
     <div class="tabbody" style="display: block;">
-        <?php foreach($user['permissions'] as $permission){
-            if (in_array("sale_add",$permission)):?>
+        <?php if($sales_add): ?>
                 <div class="button"><a href="<?php echo BASE_URL; ?>sales/add">Adicionar Venda</a></div>
-        <?php endif;} ?>
+        <?php endif ?>
                 <input type="text" id="search" data-type="searchSales"/>
         <table border="0" width="100%">
             <tr>
@@ -22,10 +21,9 @@
                     <td><?php echo $statuses[$sale['status']]; ?></td>
                     <td>R$ <?php echo number_format($sale['total_price'], 2, ",", "."); ?></td>
                     <td width="100">
-                    <?php foreach($user['permissions'] as $permission){
-                        if (in_array("sale_edit",$permission)):?>
+                        <?php if($sales_edit): ?>
                             <div class="button button_small"><a href="<?php echo BASE_URL;?>sales/edit/<?php echo $sale['id_sale'];?>" >Editar</a></div>
-                    <?php endif;} ?>                       
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach;?>

@@ -15,10 +15,23 @@ class puchasesController extends controller
             'company' => array(),
             'user' => array()
         );
+
         $users = new users();
         $data['user'] = $users->getUser($_SESSION['ccUser']);
+        //Permissions menu
+        $data['permissions'] = $users->hasPermission($data['user']['id_group'], "permissions");
+        $data['users'] = $users->hasPermission($data['user']['id_group'], "users");
+        $data['clients'] = $users->hasPermission($data['user']['id_group'], "clients");
+        $data['inventory'] = $users->hasPermission($data['user']['id_group'], "inventory");
+        $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
+        $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
+        //Permissions screen
+        $data['client_add'] = $users->hasPermission($data['user']['id_group'], "client_add");
+        $data['client_edit'] = $users->hasPermission($data['user']['id_group'], "client_edit");
+        $data['client_del'] = $users->hasPermission($data['user']['id_group'], "client_del");
+
         $company = new companies();
-        $data['company'] = $company->getCompany();    
+        $data['company'] = $company->getCompany();
         return $data;
     }
     public function index()

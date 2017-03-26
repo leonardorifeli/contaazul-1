@@ -2,10 +2,9 @@
 
 <div class="tabcontent">
     <div class="tabbody" style="display: block;">
-        <?php foreach($user['permissions'] as $permission){
-            if (in_array("inventory_add",$permission)):?>
-                <div class="button"><a href="<?php echo BASE_URL; ?>inventory/add">Adicionar Produtos</a></div>
-        <?php endif;} ?>  
+        <?php if($inventory_add): ?>
+            <div class="button"><a href="<?php echo BASE_URL; ?>inventory/add">Adicionar Produtos</a></div>
+        <?php endif; ?>
                 <input type="text" id="search" data-type="searchInventory"/>
         <table border="0" width="100%">
             <tr>
@@ -22,14 +21,12 @@
                     <td width="120" style="text-align:center;<?php echo ($inventory['quantity']<$inventory['min_quantity'])?"color:red;":""; ?>"><?php echo $inventory['quantity']; ?></td>
                     <td width="120" style="text-align:center;"><?php echo $inventory['min_quantity']; ?></td>
                     <td width="200">
-                    <?php foreach($user['permissions'] as $permission){
-                        if (in_array("inventory_edit",$permission)):?>
+                        <?php if($inventory_edit): ?>
                             <div class="button button_small"><a href="<?php echo BASE_URL;?>inventory/edit/<?php echo $inventory['id'];?>" >Editar</a></div>
-                    <?php endif;} ?>  
-                    <?php foreach($user['permissions'] as $permission){
-                        if (in_array("inventory_del",$permission)):?>
+                        <?php endif ?>
+                        <?php if($inventory_del): ?>
                             <div class="button button_small"><a href="<?php echo BASE_URL;?>inventory/del/<?php echo $inventory['id'];?>" onclick=" return confirm('Deseja realmente excluir este usuário?')" >Excluir</a></div>
-                    <?php endif;} ?>    
+                        <?php endif ?>
                         
                     </td>
                 </tr>
