@@ -26,9 +26,9 @@ class salesController extends controller
         $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
         $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
         //Permissions screen
-        $data['sales_add'] = $users->hasPermission($data['user']['id_group'], "sales_add");
-        $data['sales_edit'] = $users->hasPermission($data['user']['id_group'], "sales_edit");
-        $data['sales_del'] = $users->hasPermission($data['user']['id_group'], "sales_del");
+        $data['sale_add'] = $users->hasPermission($data['user']['id_group'], "sale_add");
+        $data['sale_edit'] = $users->hasPermission($data['user']['id_group'], "sale_edit");
+        $data['sale_del'] = $users->hasPermission($data['user']['id_group'], "sale_del");
 
         $company = new companies();
         $data['company'] = $company->getCompany();

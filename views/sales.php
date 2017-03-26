@@ -2,7 +2,7 @@
 
 <div class="tabcontent">
     <div class="tabbody" style="display: block;">
-        <?php if($sales_add): ?>
+        <?php if($sale_add): ?>
                 <div class="button"><a href="<?php echo BASE_URL; ?>sales/add">Adicionar Venda</a></div>
         <?php endif ?>
                 <input type="text" id="search" data-type="searchSales"/>
@@ -21,7 +21,7 @@
                     <td><?php echo $statuses[$sale['status']]; ?></td>
                     <td>R$ <?php echo number_format($sale['total_price'], 2, ",", "."); ?></td>
                     <td width="100">
-                        <?php if($sales_edit): ?>
+                        <?php if($sale_edit): ?>
                             <div class="button button_small"><a href="<?php echo BASE_URL;?>sales/edit/<?php echo $sale['id_sale'];?>" >Editar</a></div>
                         <?php endif; ?>
                     </td>
