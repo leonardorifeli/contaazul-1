@@ -68,5 +68,103 @@ class sales extends model{
         $sql = "UPDATE sales SET id_user = '$this->id_user', status = '$status' WHERE id = '$id_sale' AND id_company = '$this->id_company'";
         $this->db->query($sql);
     }
+
+    public function getSalesFiltered($client_name, $period1, $period2, $status, $order)
+    {
+        $array = [];
+        $where = [];
+
+        $sql = "SELECT 
+                  c.name,
+                  s.date_sale,
+                  s.total_price,
+                  s.status                   
+                FROM 
+                  sales s 
+                LEFT JOIN 
+                  clients c 
+                ON c.id = s.id_client
+                WHERE ";
+        $where[] = "s.id_company = :id_company";
+
+        if (!empty($client_name)) {
+            $where[] = "c.name = :name";
+        }
+
+        if (!empty($period1) && !empty($period2)) {
+            $where[] = "s.date_sale BETWEEN :period1 AND :period2";
+        }
+
+        if ($status != '') {
+            $where[] = "s.status = :status";
+        }
+
+        $sql .= implode(' AND ', $where);
+
+        switch ($order) {
+            case 'date_desc':
+            default:
+                $sql .= " ORDER BY s.date_sale DESC";
+                break;
+            case 'date_asc':
+                $sql .= " ORDER BY s.date_sale ASC";
+                break;
+            case 'status':
+                $sql .= "ORDER BY s.status";
+                break;
+        }
+
+        $sql = $this->db->prepare($sql);
+
+        $sql->bindValue(':id_company', $this->id_company);
+        if (!empty($client_name)) {
+            $sql->bindValue(':name', $client_name);
+        }
+
+        if (!empty($period1) && !empty($period2)) {
+            $sql->bindValue(':period1', $period1);
+            $sql->bindValue(':period2', $period2);
+        }
+
+        if ($status != '') {
+            $sql->bindValue(':status', $status);
+        }
+
+
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -76,7 +76,28 @@ class reportsController extends controller
 
     public function sales_pdf()
     {
-        echo 'reports sales pdf';
+        $data = $this->data();
+        if ($data['reports_sales']) {
+            $data['statuses'] = [
+                '0' => 'Aguardando Pgto.',
+                '1' => 'Pago',
+                '2' => 'Cancelado'
+            ];
+
+            $client_name = addslashes($_GET['client_name']);
+            $period1 = addslashes($_GET['period1']);
+            $period2 = addslashes($_GET['period2']);
+            $status = addslashes($_GET['status']);
+            $order = addslashes($_GET['order']);
+
+            $sales = new sales();
+
+            $data['sales_list'] = $sales->getSalesFiltered($client_name, $period1, $period2, $status, $order);
+
+            $this->loadView('reports_sales_pdf', $data);
+        } else {
+            header("Location: ".BASE_URL);
+        }
     }
 
 }
