@@ -25,6 +25,7 @@ class inventoryController extends controller
         $data['inventory'] = $users->hasPermission($data['user']['id_group'], "inventory");
         $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
         $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
+        $data['reports'] = $users->hasPermission($data['user']['id_group'], "reports");
         //Permissions screen
         $data['inventory_add'] = $users->hasPermission($data['user']['id_group'], "inventory_add");
         $data['inventory_edit'] = $users->hasPermission($data['user']['id_group'], "inventory_edit");

@@ -26,6 +26,7 @@ class homeController extends controller
         $data['inventory'] = $users->hasPermission($data['user']['id_group'], "inventory");
         $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
         $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
+        $data['reports'] = $users->hasPermission($data['user']['id_group'], "reports");
         //Permissions screen
         
         

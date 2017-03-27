@@ -84,6 +84,9 @@ body{
 .menuarea li:nth-child(7){
     background-image: url('../images/puchases.png');
 }
+.menuarea li:nth-child(8){
+    background-image: url('../images/reports.png');
+}
 .area{
     padding: 15px;
 }
@@ -240,6 +243,30 @@ input[name=searchClients]{
     padding: 10px;
     margin-right: 10px;
     border-radius: 3px;
+}
+.report-item{
+    width:160px;
+    height:180px;
+    background-color: #CCC;
+    float: left;
+    margin:20px;
+    padding:20px;
+    text-align: center;
+    font-size:17px;
+}
+.report-item:hover{
+    cursor: pointer;
+}
+.report-item a{
+    text-decoration: none;
+    color: #000;
+}
+.report-grid-4{
+    width:20%;
+    height:150px;
+    float: left;
+    text-align: center;
+    margin-left:5%;
 }
 
 

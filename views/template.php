@@ -33,7 +33,10 @@
                     <?php endif; ?>
                     <?php if (isset($puchases) && $puchases):?>
                         <li><a href="<?php echo BASE_URL; ?>puchases">Compras</a></li>
-                    <?php endif; ?>                        
+                    <?php endif; ?>
+                    <?php if (isset($reports) && $reports):?>
+                        <li><a href="<?php echo BASE_URL; ?>reports">Relatórios</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>  

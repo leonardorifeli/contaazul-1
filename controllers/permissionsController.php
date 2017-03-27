@@ -22,6 +22,7 @@ class permissionsController extends controller{
         $data['inventory'] = $users->hasPermission($data['user']['id_group'], "inventory");
         $data['sales'] = $users->hasPermission($data['user']['id_group'], "sales");
         $data['puchases'] = $users->hasPermission($data['user']['id_group'], "puchases");
+        $data['reports'] = $users->hasPermission($data['user']['id_group'], "reports");
         //Permissions screen
         $data['permissions_add'] = $users->hasPermission($data['user']['id_group'], "permissions_add");
         $data['permissions_edit'] = $users->hasPermission($data['user']['id_group'], "permissions_edit");
