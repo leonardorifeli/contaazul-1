@@ -23,5 +23,12 @@ class controller
         extract($viewData);
         include "views/".$viewName.".php";
     }
+
+    public function loadLibrary($library)
+    {
+        if (file_exists("libraries/".$library.".php")) {
+            include "libraries/".$library.".php";
+        }
+    }
 }
 

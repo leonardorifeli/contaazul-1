@@ -59,6 +59,20 @@ class inventory extends model{
         $this->db->query("DELETE FROM inventory WHERE id = '$id' AND id_company = '$this->id_company'");
         $this->setLog($id, "del");
     }
+
+    public function getInventoryFiltered()
+    {
+        $array = [];
+
+        $sql = $this->db->prepare("SELECT *, (min_quantity - quantity) as dif FROM inventory WHERE quantity <= min_quantity AND id_company = '$this->id_company' ORDER BY dif DESC");
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
 }
 
 

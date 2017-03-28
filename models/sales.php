@@ -88,7 +88,7 @@ class sales extends model{
         $where[] = "s.id_company = :id_company";
 
         if (!empty($client_name)) {
-            $where[] = "c.name = :name";
+            $where[] = "c.name LIKE '%$client_name%'";
         }
 
         if (!empty($period1) && !empty($period2)) {
@@ -117,9 +117,6 @@ class sales extends model{
         $sql = $this->db->prepare($sql);
 
         $sql->bindValue(':id_company', $this->id_company);
-        if (!empty($client_name)) {
-            $sql->bindValue(':name', $client_name);
-        }
 
         if (!empty($period1) && !empty($period2)) {
             $sql->bindValue(':period1', $period1);

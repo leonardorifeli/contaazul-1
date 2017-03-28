@@ -31,6 +31,7 @@ class reportsController extends controller
         $data['reports'] = $users->hasPermission($data['user']['id_group'], "reports");
         //Permissions screen
         $data['reports_sales'] = $users->hasPermission($data['user']['id_group'], "reports_sales");
+        $data['reports_inventory'] = $users->hasPermission($data['user']['id_group'], "reports_inventory");
         $company = new companies();
         $data['company'] = $company->getCompany();
         return $data;
@@ -93,8 +94,69 @@ class reportsController extends controller
             $sales = new sales();
 
             $data['sales_list'] = $sales->getSalesFiltered($client_name, $period1, $period2, $status, $order);
-
+            $data['filtered'] = $_GET;
+            //Carregando a biblioteca mpdf
+            $this->loadLibrary('mpdf60/mpdf');
+            //Iniciando o buffer
+            //A partir desse momento até fechar o buffer nada vai aparecer na tela
+            //Ficara na memória do buffer para gerar o pdf
+            ob_start();
+            //Armazena o html na memória
             $this->loadView('reports_sales_pdf', $data);
+            //Atribui a variável html
+            $html = ob_get_contents();
+            //Limpa a memório
+            ob_end_clean();
+            //Inicia o pdf
+            $mpdf = new mPDF();
+            //Escreve no pdf
+            $mpdf->WriteHTML($html);
+            //Mostra o pdf
+            $mpdf->Output();
+
+        } else {
+            header("Location: ".BASE_URL);
+        }
+    }
+
+    public function inventory()
+    {
+        $data = $this->data();
+        if ($data['reports_inventory']) {
+
+            $this->loadTemplate('reports_inventory', $data);
+        } else {
+            header("Location: ".BASE_URL);
+        }
+    }
+
+    public function inventory_pdf()
+    {
+        $data = $this->data();
+        if ($data['reports_inventory']) {
+
+
+            $inventory = new inventory();
+
+            $data['inventory_list'] = $inventory->getInventoryFiltered();
+            $data['filtered'] = $_GET;
+            //Carregando a biblioteca mpdf
+            $this->loadLibrary('mpdf60/mpdf');
+            //Iniciando o buffer
+            ob_start();
+            //Armazena o html na memória
+            $this->loadView('reports_inventory_pdf', $data);
+            //Atribui a variável html
+            $html = ob_get_contents();
+            //Limpa a memório
+            ob_end_clean();
+            //Inicia o pdf
+            $mpdf = new mPDF();
+            //Escreve no pdf
+            $mpdf->WriteHTML($html);
+            //Mostra o pdf
+            $mpdf->Output();
+
         } else {
             header("Location: ".BASE_URL);
         }
