@@ -268,12 +268,70 @@ input[name=searchClients]{
     text-align: center;
     margin-left:5%;
 }
-
-
-
-
-
-
+.db-row1 .db-row2{
+    clear: both;
+}
+.db-grid-1{
+    width:33%;
+    float: left;
+}
+.db-grid-area{
+    background-color: #CCC;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 100px;
+    padding-left: 20px;
+}
+.db-grid-1:nth-child(1) .db-grid-area{
+    margin-left: 0;
+}
+.db-grid-2:nth-child(1) .db-grid-area{
+    margin-left: 0;
+}
+.db-grid-2:nth-child(1) .db-info{
+    margin-left: 0;
+}
+.db-grid-1:nth-child(3) .db-grid-area{
+    margin-right: 0;
+}
+.db-row2 .db-grid-1 .db-info{
+    margin-right: 0;
+}
+.db-grid-area-count{
+    font-size: 28px;
+    padding-top: 20px;
+}
+.db-grid-area-legend{
+    font-size: 14px;
+}
+.db-grid-2{
+    width:66%;
+    float: left;
+}
+.db-grid-3{
+    width:100%;
+    float: left;
+}
+.db-info{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+.db-info-title{
+    height: 40px;
+    line-height: 40px;
+    font-size: 17px;
+    padding-left: 10px;
+    border-bottom: 1px solid #CCC;
+}
+.db-info-body{
+    padding: 10px;
+}
 
 
 
